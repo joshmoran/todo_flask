@@ -1,0 +1,134 @@
+{% extends "layout.html" %} 
+
+
+
+<!-- Title Block -->
+{% block title %} To Do List {% endblock %}
+
+<!--  -->
+<!-- Content Block -->
+<!--  -->
+{% block content %}
+<div id="container">
+
+<div id="content">
+  {% if errors %}
+    <h2>Errors</h2>
+    <p class="errorWarning">Please Correct These Issues</p>
+    <div class="errors">
+    {% for row in errors %}
+      {% if row[0] == "updatetask" %}
+        <p>Successfully updated the task</p>
+      {% elif row[0] == 'addtask' %}
+        <p>Successfully added the task</p>
+      {% elif row[0] == 'deletetask' %}
+        <p>Successfully delete the task</p>
+      {% elif row[0] == 'description' %}
+        <p>Description cannot be empty</p>
+      {% elif row[0] == 'due_date' and row[1] != 'empty' %}
+        <p>Due date must be between 2023 and 2100</p>
+      {% elif row[0] == 'due_date' %}
+        <p>Due date cannot be empty</p>
+      {% elif row[1] == 'due_time' %}
+        <p>Due time cannot be empty</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div id="pending">
+    <h2>Pending Tasks</h2>
+    {% for row in tasks %}
+        {% if row['priority'] == 'MEDIUM' %}
+          <div class="task orange">
+        {% elif row['priority'] == 'HIGH' %}
+          <div class="task red">
+        {% else %}
+          <div class="task green">
+        {% endif %}
+      
+        <div class="top">
+           <h3>{{ row['name']}}</h3>
+           <h3>{{ row['priority'] }}</h3>
+        </div>
+        <div class="bottom">
+          <p id="dateNtime">
+            <span>Remaining Time</span>
+            <span class="dateAndTime">{{ row['due_date']}}T{{ row['due_time']}}</span>
+            <span>Due: {{ row['due_date'] }} at {{ row['due_time'] }}</span>
+          </p>
+          <div class="actions">
+            <button><a class="anAction" href="{{ url_for('update', task_id=row['id'], complete=false) }}">Update</a></button>
+            <form action="{{ url_for('complete') }}" method="post">
+              <input type="hidden" id="task_id" name="task_id" value="{{ row['id'] }}">
+              <input type="hidden" id="complete" name="complete" value="False">
+              <button type="submit" class="anAction">Complete Task</button>
+            </form>
+            <form action="{{ url_for('delete') }}" method="post">
+              <input type="hidden" id="task_id" name="task_id" value="{{ row['id'] }}">
+              <input type="hidden" id="complete" name="complete" value="False">
+              <button type="submit" class="anAction">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
+  <div id="completed">
+    <h2>Completed Tasks</h2>
+    {% for row in complete %}
+      <div class="task">
+        <div class="top">
+           <h4>{{ row['name']}}</h4>
+           <h5>{{ row['priority'] }}</h5>
+        </div>
+        <div class="bottom">
+          <p>Completed on: {{ row['due_date'] }}/{{ row['due_time'] }}</p>
+          <div class="actions">
+            <form action="{{ url_for('complete') }}" method="post">
+              <input type="hidden" id="task_id" name="task_id" value="{{ row['id'] }}">
+              <input type="hidden" id="complete" name="complete" value="True">
+              <button type="submit">Un-Complete Task</button>
+            </form>
+            <form action="{{ url_for('delete') }}" method="post">
+              <input type="hidden" id="task_id" name="task_id" value="{{ row['id'] }}">
+              <input type="hidden" id="complete" name="complete" value="True">
+              <button type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
+  
+  <div id="assTask">
+    <h2>Add a Task</h2>
+    <form action="{{ url_for('add') }}" class="styleForm" method="post">
+      <div class="row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="description" placeholder="name">
+      </div>
+      <div class="row">
+        <label for="priority">Priority:</label>
+        <select name="priority">
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="duefor">Date Due: </label>
+        <input type="date" id="duefor" name="duefor">
+      </div>
+      <div class="row">
+        <label for="duetime">Due Time: </label>
+        <input type="time" id="duetime" name="duetime">
+      </div>
+      <button type="submit">Add Task</button>
+    </form> 
+  </div>
+</div>
+
+</div>
+{% endblock %}

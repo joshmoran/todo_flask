@@ -1,0 +1,144 @@
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+h2 {
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+  text-decoration: double;
+}
+
+h3 {
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+.errorWarning {
+  text-align: center;
+}
+
+.errors {
+  width: 50%;
+  padding: 1em;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  background-color: red;
+}
+
+
+#lists {
+  display: flex;
+  width: 20%;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+#pending >  div {
+  padding: 1em;
+  width: 70%;
+  margin: 0.25em auto;
+}
+
+#dateNtime {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#dateNtime span:first-child {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+#dateNtime span:last-child {
+  padding: 1em 0 0 0;
+}
+
+
+div#pending {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.link_to_list {
+  text-decoration: none;
+  width: 10em;
+  border: 1px solid red;
+}
+
+#content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.red {
+  background-color: lightcoral;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.green {
+  background-color: greenyellow;
+}
+
+.top, .bottom {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  align-content: stretch;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.anAction { 
+  color: black;
+  text-decoration: none;
+}
+
+.styleForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+  width: 35%;
+  align-content: space-between;
+  justify-content: space-between;
+  max-width: 640px;
+  padding: 0.5em;
+  margin: 0.25em;
+}
+
+.styleForm button[type=submit] {
+  padding: 0.5em 1em;
+  margin: 0.5em auto 2em auto;
+  background-color: darkgrey;
+  color: black;
+  border: 10px solid black;
+  width: 40%;
+  max-width: 10rem;
+  border: none;
+  cursor: pointer;
+}

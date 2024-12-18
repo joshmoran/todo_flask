@@ -1,0 +1,25 @@
+<h1>Add a Task</h1>
+<form action="{{ url_for("Index")}}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="description" placeholder="name">
+
+    <br />
+
+    <label for="priority">Priority:</label>
+    <select name="priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+    </select>
+
+    <br />
+    <label for="duefor">Date Due: </label>
+    <input type="date" id="duefor" name="duefor">
+
+    <br />
+
+    <label for="duetime">Due Time: </label>
+    <input type="time" id="duetime" name="duetime">
+
+    <button type="submit">Login</button>
+</form> 

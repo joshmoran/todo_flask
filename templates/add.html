@@ -1,0 +1,13 @@
+{% extends "layout.html" %} 
+
+{% block title %} To Do List - Add {% endblock %}
+
+{% block content %}
+<h1>Create a Task</h1>
+<form method="POST" action="">
+    <p>
+        <!-- {{ form.name.label }} -->
+    </p>
+    <p>{{ form.submit() }} </p>
+</form>
+{% endblock %}

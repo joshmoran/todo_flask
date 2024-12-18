@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  <h2>Update a Task</h2>
+  <form action="/submitchange" class="styleForm" method="POST">
+    {% for details in task %}
+  
+      <input type="hidden" id="task_id" name="task_id" value="{{details['id']}}" />
+      <input type="hidden" id="complete" name="complete" value="{{complete}}" />
+      <div class="row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{details['name']}}" />
+      </div>
+
+      <div class="row">
+        <label for="priority">Priority:</label>
+        <select name="priority" selected="{{details['priority']}}">
+          {% if details['priority'] == 'HIGH'%}
+            <option value="HIGH" selected>High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+          {% elif details['priority'] == 'MEDIUM' %}
+            <option value="HIGH">High</option>
+            <option value="MEDIUM" selected>Medium</option>
+            <option value="LOW">Low</option>
+          {% else %}
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW" selected>Low</option>
+          {% endif %}
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="duefor">Date Due: </label>
+        <input type="date" id="duefor" name="duefor" value="{{ details['due_date']}}">
+      </div>
+
+      <div class="row">
+        <label for="duetime">Due Time: </label>
+        <input type="time" id="duetime" name="duetime" value="{{ details['due_time']}}">
+      </div>
+
+      <button type="submit">Update Task</button>
+    {% endfor %}
+  </form>
+</div>
+{% endblock %}
