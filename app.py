@@ -1,3 +1,4 @@
+#!/bin/usr/python
 # importing Flask and other modules
 import sqlite3
 import sys
