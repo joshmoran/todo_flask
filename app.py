@@ -113,7 +113,6 @@ def make_change():
     for_index += "due_date=empty"
     errors = True
   else:
-    print(due_date, file=sys.stderr)
     splitDate = due_date.split('-')
     dueDate = datetime( int(splitDate[0]), int(splitDate[1]), int(splitDate[2]) )
 
@@ -140,7 +139,6 @@ def make_change():
     else:
       sql += "completed_tasks"
     sql += " SET name = '" + description + "', priority = '" + priority + "', due_time = '" + due_time + "', due_date = '" + due_date+ "' where id = " + task_id
-    print( sql , file=sys.stderr )
 
     conn.execute(sql)
     conn.commit()
@@ -253,6 +251,7 @@ def checkAnd( string ):
 
 if __name__=='__main__':
    app.run(
-      debug=True,
-      host="192.168.0.220"
+     debug=True,
+     port=5000,
+     host='192.168.0.220'  # Allows connections from outside the container.
    )
