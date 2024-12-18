@@ -6,7 +6,7 @@ from datetime import datetime
 from flask import Flask, request, render_template, redirect, url_for
 
 # Flask constructor
-app = Flask(__name__)   
+app = Flask(__name__)
  
 def db_connection():
     conn = sqlite3.connect('schema.db')
