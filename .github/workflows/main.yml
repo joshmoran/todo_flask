@@ -1,6 +1,6 @@
 name: Flask CI
 
-   on: [push]
+   on: push
 
    jobs:
      build:
