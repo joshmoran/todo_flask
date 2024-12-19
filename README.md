@@ -11,7 +11,7 @@
 2. Run the program by using 
    > 'Python3 app.py'
 
-# 2. Task objectives
+# 2. Task objectives and an Overview
 ## Task Objectives 
 > A full PDF copy can be found in the root directory, called 'Flask Task.pdf'
 
@@ -42,3 +42,8 @@
 - Completed tasks:
 - Are moved to a separate section (e.g. "Completed Tasks").
 - Show the deadline as "Completed on [date/time].
+
+## Overview
+- This application uses a SQLite Database (schema.db)
+  - To edit, run 'sqlite3 schema.db'
+- A copy of the database design and input data can be found at 'schema.sql'
