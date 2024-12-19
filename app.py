@@ -254,5 +254,5 @@ if __name__=='__main__':
    app.run(
      debug=True,
      port=5000,
-     host='192.168.0.220'  # Allows connections from outside the container.
+     host='127.0.0.1'  # Allows connections from outside the container.
    )
